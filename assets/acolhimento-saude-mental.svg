@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 560" role="img" aria-labelledby="title desc">
+  <title id="title">Acolhimento em um momento difícil</title>
+  <desc id="desc">Duas pessoas sentadas juntas em um banco, uma oferecendo apoio à outra, perto de uma janela ensolarada e de plantas.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f5e8d7"/>
+      <stop offset="1" stop-color="#e4eee5"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#f5cf8f"/>
+      <stop offset="1" stop-color="#e8ad79"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="560" rx="38" fill="url(#wall)"/>
+  <circle cx="538" cy="154" r="102" fill="url(#sun)" opacity=".82"/>
+  <path d="M430 52h196v236H430z" fill="#f8f5eb" opacity=".72"/>
+  <path d="M529 52v236M430 170h196" stroke="#b5c6b7" stroke-width="10" opacity=".75"/>
+  <path d="M0 434c114-39 206-15 303 4 112 23 249 24 417-27v149H0z" fill="#d3e1d3"/>
+  <ellipse cx="363" cy="480" rx="199" ry="24" fill="#728b7d" opacity=".18"/>
+  <!-- banco -->
+  <path d="M191 403h344c12 0 21 9 21 21v16H170v-16c0-12 9-21 21-21Z" fill="#a9765e"/>
+  <path d="M203 440v45m321-45v45" stroke="#80604e" stroke-width="15" stroke-linecap="round"/>
+  <!-- pessoa à esquerda -->
+  <path d="M256 311c-18 25-29 65-27 100l102 5c8-37 1-78-18-105Z" fill="#829b8a"/>
+  <circle cx="290" cy="258" r="39" fill="#c78365"/>
+  <path d="M251 257c-2-38 19-61 49-60 23 1 39 18 39 43-18-9-36-17-53-24-7 18-18 30-35 41Z" fill="#55453e"/>
+  <path d="M266 412c-22 17-40 36-56 57h110l18-54Z" fill="#526f69"/>
+  <path d="M325 411c12 21 31 39 56 58h-58l-42-45Z" fill="#68887b"/>
+  <!-- pessoa à direita -->
+  <path d="M369 313c-15 30-20 68-10 101l112-3c1-43-12-79-36-101Z" fill="#c47c62"/>
+  <circle cx="414" cy="257" r="39" fill="#d69c78"/>
+  <path d="M375 254c-1-31 17-54 42-56 29-2 46 16 46 47-16-7-31-17-44-30-11 16-25 29-44 39Z" fill="#665046"/>
+  <path d="M393 412c-3 22-17 41-39 57h96l-7-55Z" fill="#9e705e"/>
+  <path d="M456 411c17 21 39 41 65 58h-92l-23-54Z" fill="#b56e59"/>
+  <!-- gesto de apoio -->
+  <path d="M358 329c16-20 35-24 52-12 13 9 23 25 29 40" fill="none" stroke="#d69c78" stroke-width="17" stroke-linecap="round"/>
+  <circle cx="441" cy="358" r="10" fill="#d69c78"/>
+  <!-- planta -->
+  <path d="M104 438h72l-10 53h-52z" fill="#bd8065"/>
+  <path d="M140 438c-3-38-19-55-39-70m38 70c7-45 27-66 49-76m-46 76c-5-25-3-48 3-68" fill="none" stroke="#648375" stroke-width="8" stroke-linecap="round"/>
+  <path d="M96 360c19-2 32 11 37 31-19 1-33-9-37-31Zm82-2c-19 2-31 16-34 35 19-1 32-12 34-35Zm-39-22c15 8 21 24 17 42-16-8-22-23-17-42Z" fill="#829b78"/>
+  <path d="M86 493h105" stroke="#8ca697" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+</svg>

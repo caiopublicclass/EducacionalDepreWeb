@@ -44,31 +44,43 @@ function mapColor(position) {
   const rgb = left.rgb.map((value, channel) => Math.round(value + (right.rgb[channel] - value) * progress));
   return `rgb(${rgb.join(' ')})`;
 }
-function setSelection(state, button) {
-  map.querySelectorAll('button').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+const stateByCode = new Map(states.map((state) => [state[0], state]));
+function setSelection(state, region) {
+  map.querySelectorAll('.map-state').forEach((item) => {
+    item.setAttribute('aria-pressed', String(item === region));
+  });
   selectedName.textContent = state[1];
   selectedValue.textContent = `${state[2].toFixed(1).replace('.', ',')}%`;
+  selectedValue.style.setProperty('--selected-state-color', mapColor((state[2] - min) / (max - min)));
   selectedCI.textContent = `Intervalo de confiança de 95%: ${state[3]}%.`;
   selectedContext.textContent = `Em cada 100 adultos, aproximadamente ${state[2].toFixed(1).replace('.', ',')} relataram diagnóstico na pesquisa.`;
 }
-states.forEach((state) => {
-  const button = document.createElement('button');
-  const intensity = (state[2] - min) / (max - min);
-  button.type = 'button';
-  button.className = 'state-tile';
-  button.style.setProperty('--heat', intensity.toFixed(2));
-  button.style.setProperty('--tile-color', mapColor(intensity));
-  button.style.gridColumn = positions[state[0]][0];
-  button.style.gridRow = positions[state[0]][1];
-  button.setAttribute('aria-pressed', 'false');
-  button.setAttribute('aria-label', `${state[1]}: ${state[2].toFixed(1).replace('.', ',')} por cento`);
-  button.innerHTML = `<strong>${state[0]}</strong><span>${state[2].toFixed(1).replace('.', ',')}%</span>`;
-  button.addEventListener('click', () => setSelection(state, button));
-  map.append(button);
-});
-const rioGrandeDoSul = states.find((state) => state[0] === 'RS');
-setSelection(rioGrandeDoSul, map.querySelector('[aria-label^="Rio Grande do Sul"]'));
-
+function initializeStateMap() {
+  const regions = map.querySelectorAll('.map-state');
+  regions.forEach((region) => {
+    const state = stateByCode.get(region.dataset.state);
+    if (!state) return;
+    const intensity = (state[2] - min) / (max - min);
+    region.style.fill = mapColor(intensity);
+    region.setAttribute('tabindex', '0');
+    region.setAttribute('role', 'button');
+    region.setAttribute('aria-pressed', 'false');
+    region.setAttribute('aria-label', `${state[1]}: ${state[2].toFixed(1).replace('.', ',')} por cento`);
+    region.addEventListener('pointerenter', () => setSelection(state, region));
+    region.addEventListener('focus', () => setSelection(state, region));
+    region.addEventListener('click', () => setSelection(state, region));
+    region.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setSelection(state, region);
+      }
+    });
+  });
+  const rioGrandeDoSul = stateByCode.get('RS');
+  const selectedRegion = map.querySelector('#state-RS');
+  if (rioGrandeDoSul && selectedRegion) setSelection(rioGrandeDoSul, selectedRegion);
+}
+initializeStateMap();
 const carousel = document.querySelector('.story-carousel');
 if (carousel) {
   const slides = [...carousel.querySelectorAll('.story-slide')];
@@ -100,3 +112,7 @@ if (carousel) {
   carousel.querySelector('[data-direction="prev"]').addEventListener('click', () => showSlide(currentSlide - 1));
   carousel.querySelector('[data-direction="next"]').addEventListener('click', () => showSlide(currentSlide + 1));
 }
+
+
+
+
